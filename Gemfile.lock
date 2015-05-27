@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    minitest (5.6.1)
+    observr (1.0.5)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest
+  observr
