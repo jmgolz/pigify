@@ -34,3 +34,24 @@
 
 # Bonus: Extend ruby's string class to be able to pigify a string:
 #   "Hello".pigify # => "Ellohay"
+
+class PiglatinTranslate
+	attr_reader :output_string
+
+	def initialize()
+		@output_string	= nil
+		@postfix		= "ay"
+	end
+	
+	def human_readable_string_to_piglatin(input_string, delimiter=" ")
+		
+	end
+
+	def piglatin_string_to_human_readable(input_string, delimiter=" ")
+
+	end
+	
+	def make_sentence_array_from_input(input_string, direction, delimiter=" ")
+		
+	end
+end
