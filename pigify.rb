@@ -43,7 +43,7 @@ class PiglatinTranslate
 		@postfix		= "ay"
 	end
 	
-	def human_readable_string_to_piglatin(input_string: nil, delimiter: " ", preserve_capitals: true)
+	def human_readable_string_to_piglatin(input_string:, delimiter: " ", preserve_capitals: true)
 
 		get_punctuation	= input_string.slice!(/[!?.]/)
 		word_array		= input_string.split(delimiter);		
