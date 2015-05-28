@@ -13,34 +13,56 @@ class TestPiglatinTranslate < Minitest::Test
 		#what we should get back: umanhay
 		input = "human"
 
-		assert_equal("umanhay", @translate.human_readable_string_to_piglatin(input))
+		assert_equal("umanhay", @translate.human_readable_string_to_piglatin(input_string: input))
+	end
+
+	def test_word_with_consonant_pair
+		#what we should get back: ansformationtray
+		input = "transformation"
+
+		assert_equal("ansformationtray", @translate.human_readable_string_to_piglatin(input_string: input))		
 	end
 
 	def test_single_vowel
 		#what we should get back: occupyingyay
 		input = "occupying"
 
-		assert_equal("occupyingay", @translate.human_readable_string_to_piglatin(input))		
+		assert_equal("occupyingyay", @translate.human_readable_string_to_piglatin(input_string: input))		
 	end
 
 	def test_sentence
 		#what we should get: 
 		input = "combat complains"
 
-		assert_equal("ombatcay omplainscay", @translate.human_readable_string_to_piglatin(input))
+		assert_equal("ombatcay omplainscay", @translate.human_readable_string_to_piglatin(input_string: input))
 	end
 
+	def test_sentence_case_is_preserved_set_false
+		#what we should get back: ansformationtray
+		input = "The Resemblance Mutters"
+
+		assert_equal("ethay esemblanceray uttersmay", @translate.human_readable_string_to_piglatin(input_string: input, preserve_capitals: false))
+	end	
+
+
+	def test_sentence_case_is_preserved
+		#what we should get back: ansformationtray
+		input = "The Resemblance Mutters"
+
+		assert_equal("Ethay Esemblanceray Uttersmay", @translate.human_readable_string_to_piglatin(input_string: input))		
+	end	
+
 	def test_sentence_with_numbers
-		#what we should get "15 angerousDay actsFay Electriciansay eepKay oTay hemselvesTay"
+		#what we should get "15 Angerousday Actsfay Electriciansyay Eepkay Otay Emselvesthay"
 		input = "15 Dangerous Facts Electricians Keep To Themselves"
 
-		assert_equal("15 angerousDay actsFay Electriciansay eepKay oTay hemselvesTay", @translate.human_readable_string_to_piglatin(input))
+		assert_equal("15 Angerousday Actsfay Electriciansyay Eepkay Otay Emselvesthay", @translate.human_readable_string_to_piglatin(input_string: input))
 	end
 
 	def test_sentence_with_punctuation
 		#what we should get "15 angerousDay actsFay Electriciansay eepKay oTay hemselvesTay"
 		input = "The unpopular glory renames an ice!"
 
-		assert_equal("Ethay unpopularyay oryglay enamesray anyay iceyay!", @translate.human_readable_string_to_piglatin(input))
+		assert_equal("Ethay unpopularyay oryglay enamesray anyay iceyay!", @translate.human_readable_string_to_piglatin(input_string: input))
 	end
 end

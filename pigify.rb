@@ -43,32 +43,34 @@ class PiglatinTranslate
 		@postfix		= "ay"
 	end
 	
-	def human_readable_string_to_piglatin(input_string, delimiter=" ")
-		word_array = input_string.split(delimiter);		
-		temp_arrray = []
-
+	def human_readable_string_to_piglatin(input_string: nil, delimiter: " ", preserve_capitals: true)
+		get_punctuation	= input_string.slice!(/[!?.]/)
+		word_array		= input_string.split(delimiter);		
+		temp_arrray		= []
+		
 		word_array.each{ |word| 
+			temp_word = ""
+
 			if(word[/[\d]/] != nil)
 				temp_arrray << word
 				next
 			else
 				if(word[/^[aeiou]/i] != nil)
-					temp_arrray << word + @postfix
+					temp_word = word + "y" + @postfix
+				elsif word[/^[^aeiou]{2}/i]
+					temp_word = word[2..999] + word[0..1] + @postfix					
 				else
-					temp_arrray << word[1..999] + word[0] + @postfix
+					temp_word = word[1..999] + word[0] + @postfix
 				end
 			end
+
+			if(temp_word[/[A-Z]/] && preserve_capitals == true)
+				temp_word = temp_word.downcase!.capitalize!
+			end			
+			temp_arrray << temp_word
 		}
-
+		puts "the test #{input_string} needed to preserve capitals? #{preserve_capitals.to_s}"
 		@output_string = temp_arrray.join(delimiter)
-
-	end
-
-	def piglatin_string_to_human_readable(input_string, delimiter=" ")
-
-	end
-	
-	def make_sentence_array_from_input(input_string, direction, delimiter=" ")
-		
+		@output_string + get_punctuation.to_s
 	end
 end
