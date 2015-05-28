@@ -48,10 +48,15 @@ class PiglatinTranslate
 		temp_arrray = []
 
 		word_array.each{ |word| 
-			if(word[/^[aeiou]/] != nil)
-				temp_arrray << word + @postfix
+			if(word[/[\d]/] != nil)
+				temp_arrray << word
+				next
 			else
-				temp_arrray << word[1..999] + word[0] + @postfix
+				if(word[/^[aeiou]/i] != nil)
+					temp_arrray << word + @postfix
+				else
+					temp_arrray << word[1..999] + word[0] + @postfix
+				end
 			end
 		}
 
