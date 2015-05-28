@@ -64,7 +64,7 @@ class PiglatinTranslate
 				end
 			end
 
-			if(temp_word[/[A-Z]/] && preserve_capitals == true)
+			if(temp_word[/[A-Z]/] && preserve_capitals === true)
 				temp_word = temp_word.downcase!.capitalize!
 			end			
 			temp_arrray << temp_word
