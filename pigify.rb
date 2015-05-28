@@ -44,7 +44,19 @@ class PiglatinTranslate
 	end
 	
 	def human_readable_string_to_piglatin(input_string, delimiter=" ")
-		
+		word_array = input_string.split(delimiter);		
+		temp_arrray = []
+
+		word_array.each{ |word| 
+			if(word[/^[aeiou]/] != nil)
+				temp_arrray << word + @postfix
+			else
+				temp_arrray << word[1..999] + word[0] + @postfix
+			end
+		}
+
+		@output_string = temp_arrray.join(delimiter)
+
 	end
 
 	def piglatin_string_to_human_readable(input_string, delimiter=" ")
