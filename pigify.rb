@@ -64,12 +64,12 @@ class PiglatinTranslate
 				end
 			end
 
-			if(temp_word[/[A-Z]/] && preserve_capitals === true)
+			if ( temp_word[/[A-Z]/] && preserve_capitals == true )
 				temp_word = temp_word.downcase!.capitalize!
-			end			
+			end				
 			temp_arrray << temp_word
 		}
-		puts "the test #{input_string} needed to preserve capitals? #{preserve_capitals.to_s}"
+		
 		@output_string = temp_arrray.join(delimiter)
 		@output_string + get_punctuation.to_s
 	end
