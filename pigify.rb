@@ -44,6 +44,7 @@ class PiglatinTranslate
 	end
 	
 	def human_readable_string_to_piglatin(input_string: nil, delimiter: " ", preserve_capitals: true)
+
 		get_punctuation	= input_string.slice!(/[!?.]/)
 		word_array		= input_string.split(delimiter);		
 		temp_arrray		= []
@@ -64,9 +65,13 @@ class PiglatinTranslate
 				end
 			end
 
-			if ( temp_word[/[A-Z]/] && preserve_capitals == true )
-				temp_word = temp_word.downcase!.capitalize!
-			end				
+			if ( temp_word[/[A-Z]/] )
+				temp_word = temp_word.downcase!
+				if( preserve_capitals == true)
+					temp_word.capitalize!
+				end
+			end
+
 			temp_arrray << temp_word
 		}
 		
