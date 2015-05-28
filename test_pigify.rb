@@ -31,14 +31,14 @@ class TestPiglatinTranslate < Minitest::Test
 	end
 
 	def test_sentence
-		#what we should get: 
+		#what we should get: ombatcay omplainscay
 		input = "combat complains"
 
 		assert_equal("ombatcay omplainscay", @translate.human_readable_string_to_piglatin(input_string: input))
 	end
 
 	def test_sentence_case_is_preserved_set_false
-		#what we should get back: ansformationtray
+		#what we should get back: ethay esemblanceray uttersmay
 		input = "The Resemblance Mutters"
 
 		assert_equal("ethay esemblanceray uttersmay", @translate.human_readable_string_to_piglatin(input_string: input, preserve_capitals: false))
@@ -46,7 +46,7 @@ class TestPiglatinTranslate < Minitest::Test
 
 
 	def test_sentence_case_is_preserved
-		#what we should get back: ansformationtray
+		#what we should get back: Ethay Esemblanceray Uttersmay
 		input = "The Resemblance Mutters"
 
 		assert_equal("Ethay Esemblanceray Uttersmay", @translate.human_readable_string_to_piglatin(input_string: input))		
